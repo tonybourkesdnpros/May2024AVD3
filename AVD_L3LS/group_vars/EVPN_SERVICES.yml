@@ -11,3 +11,8 @@ tenants:
             name: DMZ
             enabled: true
             ip_address_virtual: 10.1.10.1/24
+          - id: 20
+            # SVI Description
+            name: Internal
+            enabled: true
+            ip_address_virtual: 10.1.20.1/24
