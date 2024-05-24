@@ -1,0 +1,11 @@
+---
+- name: Add VLANs
+  hosts: LEAFS
+  tasks:
+    - name: Add VLAN from vlan_list
+      arista.eos.eos_vlans:
+        config:
+          - vlan_id: "{{ item }}"
+            state: active
+        state: merged
+      loop: "{{ vlan_list }}"

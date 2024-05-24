@@ -1,0 +1,50 @@
+---
+tenants:
+  - name: ACME
+    redistribute_mlag_ibgp_peering_vrfs: false
+    mac_vrf_vni_base: 10000
+    vrfs:
+      - name: VRF_A
+        vrf_vni: 10
+        svis:
+          - id: 10
+            name: DMZ
+            enabled: true
+            ip_address_virtual: 10.1.10.1/24
+          - id: 20
+            name: Internal
+            enabled: true
+            ip_address_virtual: 10.1.20.1/24
+        l3_interfaces:
+          - interfaces: [Ethernet9]
+            nodes: [leaf3]
+            ip_addresses: [10.1.5.0/31]
+            enabled: true
+        bgp_peers:
+          - ip_address: 10.1.5.1
+            remote_as: 1
+            nodes: [leaf3]
+            prefix_list_out: NO_HOST_ROUTES_VRF_A
+  - name: Yoyodine
+    redistribute_mlag_ibgp_peering_vrfs: false
+    mac_vrf_vni_base: 20000
+    vrfs:
+      - name: John
+        vrf_vni: 20
+        svis:
+          - id: 30
+            name: Test
+            ip_address_virtual: 10.1.30.1/24
+            enabled: true
+        l3_interfaces:
+          - interfaces: [Ethernet9]
+            nodes: [leaf4]
+            ip_addresses: [10.1.5.2/31]
+            enabled: true
+        bgp_peers:
+          - ip_address: 10.1.5.3
+            remote_as: 2
+            local_as: 65198
+            nodes: [leaf4]
+            prefix_list_out: NO_HOST_ROUTES_John
+

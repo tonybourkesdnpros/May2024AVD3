@@ -1,0 +1,27 @@
+---
+all:
+  vars:
+    ansible_user: arista
+    ansible_ssh_pass: aristagwio # If using SSH keys, this can be removed
+# Use this section if you want to perform testing via the eAPI
+    ansible_connection: httpapi
+    ansible_httpapi_use_ssl: True
+    ansible_httpapi_validate_certs: False
+    ansible_network_os: eos
+    ansible_httpapi_port: 443
+# Use this section if you want to perform testing via the CLI through SSH
+    # ansible_connection: network_cli
+    # ansible_network_os: eos
+    # ansible_become: yes
+    # ansible_become_method: enable
+  children:
+    SPINES:
+      hosts:
+        spine[1:4]:
+    LEAFS:
+      hosts:
+        leaf[1:4]:
+        borderleaf[1:2]:
+    BORDERLEAFS:
+      hosts:
+        borderleaf[1:2]:

@@ -8,3 +8,4 @@
     - name: Set container toplogy
       arista.cvp.cv_container_v3:
         topology: "{{ cvp_containers }}"
+        state: present

@@ -1,0 +1,8 @@
+---
+custom_ethernet_interfaces:
+- name: Ethernet8
+  description: To_Host5
+  shutdown: false
+  mtu: 1550
+  type: routed
+  ip_address: 10.1.4.1/24

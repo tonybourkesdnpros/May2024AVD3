@@ -1,4 +1,5 @@
 cvp_configlets:
+  may_avd_configlet: "alias tonyb5 show bgp evpn summary"
   MLAG_Left: "{{ lookup('file', '../configlets/MLAG_Left.cfg') }}"
   MLAG_Right: "{{ lookup('file', '../configlets/MLAG_Right.cfg') }}"
 
@@ -43,3 +44,26 @@ cvp_devices:
         - 'ATD-INFRA'
         - 'leaf4-base'
         # - 'MLAG_Right'
+
+
+CVP_DEVICES_DEFAULT:
+  - fqdn: 'leaf1'
+    parentContainerName: 'Leaf'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf1-base'
+  - fqdn: 'leaf2'
+    parentContainerName: 'Leaf'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf2-base'
+  - fqdn: 'leaf3'
+    parentContainerName: 'Leaf'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf3-base'
+  - fqdn: 'leaf4'
+    parentContainerName: 'Leaf'
+    configlets:
+      - 'ATD-INFRA'
+      - 'leaf4-base'

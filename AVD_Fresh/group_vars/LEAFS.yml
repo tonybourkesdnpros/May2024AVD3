@@ -1,0 +1,9 @@
+custom_prefix_lists:
+  - name: NO_HOST_ROUTES_VRF_A
+    sequence_numbers:
+      - sequence: 10
+        action: permit 0.0.0.0/0 le 24
+  - name: NO_HOST_ROUTES_John
+    sequence_numbers:
+      - sequence: 10
+        action: permit 0.0.0.0/0 le 24

@@ -1,0 +1,25 @@
+---
+- name: Add VLANs
+  hosts: LEAFS
+  tasks:
+    - name: Add VLAN 100
+      arista.eos.eos_vlans:
+        config:
+          - vlan_id: 100
+            state: active
+- name: Add User and SSH Key
+  hosts: all
+  tasks:
+    - name: Add new user
+      arista.eos.eos_user:
+        name: automator
+        configured_password: arista123
+        role: network-admin
+        privilege: 15
+        state: present
+    - name: Add SSH key for user automator
+      arista.eos.eos_user:
+        name: automator
+        nopassword: true
+        sshkey: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+        state: present
